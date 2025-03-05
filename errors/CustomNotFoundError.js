@@ -7,4 +7,4 @@ class CustomNotFoundError extends Error {
   }
 }
 
-module.exports = { CustomNotFoundError };
+module.exports = CustomNotFoundError;
