@@ -4,11 +4,21 @@ const { readFile } = require("node:fs/promises");
 const express = require('express');
 const app = express();
 
-app.get("/", (req, res) => serve(res, "/views/index.html"))
-app.get("/about", (req, res) => serve(res, "/views/about.html"))
-app.get("/contact-me", (req, res) => serve(res, "/views/contact-me.html"))
-app.use((req, res, next) => {
-  serve(res, "/views/404.html");
+app.get("/", (req, res) => {
+  res.sendFile("./views/index.html", {root: __dirname})
+})
+app.get("/about", (req, res) => {
+  res.sendFile("./views/about.html", {root: __dirname})
+})
+app.get("/contact-me", (req, res) => {
+  res.sendFile("./views/contact-me.html", {root: __dirname})
+})
+
+app.get("/contact", (req, res) => {
+  res.redirect("contact-me")
+})
+app.use((req, res) => {
+  res.status(404).sendFile("./views/contact-me.html", {root: __dirname})
 });
 
 
@@ -19,7 +29,7 @@ async function serve(res, viewName) {
     const contents = await readFile(viewPath);
     res.setHeader('Content-Type', 'text/html');
     res.statusCode = viewName === "/views/404.html" ? 404 : 200;
-    res.end(contents);
+    res.se(contents);
   } catch (err) {
     res.statusCode = 500;
     res.end('Server Error');
