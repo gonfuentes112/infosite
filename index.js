@@ -12,6 +12,11 @@ app.use((req, res) => {
   res.status(404).sendFile("./views/404.html", { root: __dirname });
 });
 
+app.use((err, req, res, next) => {
+  console.error(err)
+  res.status(500).send(err);
+})
+
 const PORT = 3000;
 app.listen(PORT, () =>
   console.log(`Server listening on : http://localhost:${PORT}`)
