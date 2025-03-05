@@ -9,9 +9,8 @@ indexRouter.get("/contact-me", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "views", "contact-me.html"));
 });
 indexRouter.post("/contact-me", (req, res) => {
-    res.send("email sent")
-  });
-  
+  res.send("email sent");
+});
 
 indexRouter.get("/contact", (req, res) => {
   res.redirect("contact-me");
