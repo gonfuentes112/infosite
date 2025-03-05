@@ -1,7 +1,7 @@
-const db = require("db");
+const db = require("../db");
 
 async function getAuthorById(req, res) {
-  const { authorId } = req.parms;
+  const { authorId } = req.params;
 
   const author = await db.getAuthorById(Number(authorId));
 
@@ -10,7 +10,7 @@ async function getAuthorById(req, res) {
     return;
   }
 
-  res.send(`Author name: ${author}`);
+  res.send(`Author name: ${author.name}`);
 }
 
 module.exports = { getAuthorById };

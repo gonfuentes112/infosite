@@ -5,7 +5,7 @@ const authors = [
 ];
 
 async function getAuthorById(authorId) {
-  return authors.find((author) => (author.id = authorId));
+  return authors.find((author) => author.id == authorId);
 }
 
-modules.export = { getAuthorById };
+module.exports = { getAuthorById };
