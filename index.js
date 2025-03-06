@@ -12,6 +12,9 @@ app.use("/", indexRouter);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+const assetsPath = path.join(__dirname, "public");
+app.use(express.static(assetsPath));
+
 app.use((req, res) => {
   res.status(404).sendFile("./views/404.html", { root: __dirname });
 });
