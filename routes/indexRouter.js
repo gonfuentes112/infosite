@@ -17,7 +17,7 @@ indexRouter.get("/contact", (req, res) => {
 });
 
 indexRouter.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "views", "index.html"));
+  res.render("index", {message: "EJS rocks!"})
 });
 
 module.exports = indexRouter;
