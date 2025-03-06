@@ -16,8 +16,15 @@ indexRouter.get("/contact", (req, res) => {
   res.redirect("contact-me");
 });
 
+const links = [
+  { href: "/", text: "Home" },
+  { href: "about", text: "About" },
+];
+
+const users = ["Rose", "Cake", "Biff"]
+
 indexRouter.get("/", (req, res) => {
-  res.render("index", {message: "EJS rocks!"})
+  res.render("index", {links: links, users: users});
 });
 
 module.exports = indexRouter;
